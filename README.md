@@ -6,13 +6,13 @@
 
 > 大宝剑的寓意：攻防利刃，简化繁琐操作解放双手，一键大保健~
 
-![](data/readme/image-20210828005319371.png)
+![](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210917223134778402.png)
 
 ## 功能简介
 
 bilibili视频地址（不方便拿实际目标演示，取消视频演示）
 
-![](data/readme/image-20210917102812370.png)
+![](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210917223127965121.png)
 
 
 
@@ -26,7 +26,7 @@ bilibili视频地址（不方便拿实际目标演示，取消视频演示）
 
 4、查询结果缓存在Redis，可导出为CSV表格
 
-![](data/readme/image-20210828011309673.png)
+![](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210917223141017111.png)
 
 
 
@@ -97,7 +97,7 @@ Web指纹识别时并未发送恶意请求所以无需代理。
 
 **注意！！！**：**漏扫功能需要在系统设置中填写正确的机器人WebHook地址才能使用，支持钉钉和飞书**
 
-![](data/readme/image-20210917130248282.png)
+![](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210917223225635363.png)
 
 ## 安装教程
 
@@ -193,3 +193,4 @@ sh centos.sh
 
 然后打开浏览器访问 IP:5000 登录即可（默认账户密码admin/admin，进去自己改）
 
+> XRSec has the right to modify and interpret this article. If you want to reprint or disseminate this article, you must ensure the integrity of this article, including all contents such as copyright notice. Without the permission of the author, the content of this article shall not be modified or increased or decreased arbitrarily, and it shall not be used for commercial purposes in any way
