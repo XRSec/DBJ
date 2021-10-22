@@ -1,4 +1,4 @@
-name: AWVS14 Docker Build
+name: DBJ Docker Build
 
 on:   
   watch:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_job:
-    name: AWVS14 Docker Build
+    name: DBJ Docker Build
     runs-on: ubuntu-latest
     steps:
       - 
