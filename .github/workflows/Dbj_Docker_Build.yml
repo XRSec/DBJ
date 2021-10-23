@@ -23,8 +23,8 @@ jobs:
 #       - 
 #         name: Create local changes
 #         run: |
-#           wget -O README.md `curl -u xrsec:${{ secrets.TOKEN_GITHUB }} -s 'https://api.github.com/repos/wgpsec/DBJ/contents/README.md' | grep "download_url" | cut -d '"' -f 4`
-#           sed -i '3 a [![Docker Automated Build](https://img.shields.io/docker/automated/xrsec/dbj?label=Build&logo=docker&style=flat-square)](https://hub.docker.com/r/xrsec/dbj) [![CobaltStrike Docker Build](https://github.com/XRSec/DBJ/actions/workflows/Dbj_Docker_Build.yml/badge.svg)](https://github.com/XRSec/DBJ/actions/workflows/Dbj_Docker_Build.yml)' README.md
+#           wget -O README.md `curl -u ${{ secrets.DOCKERHUB_USERNAME }}:${{ secrets.TOKEN_GITHUB }} -s 'https://api.github.com/repos/wgpsec/DBJ/contents/README.md' | grep "download_url" | cut -d '"' -f 4`
+#           sed -i '3 a [![Docker Automated Build](https://img.shields.io/docker/automated/${{ secrets.DOCKERHUB_USERNAME }}/dbj?label=Build&logo=docker&style=flat-square)](https://hub.docker.com/r/${{ secrets.DOCKERHUB_USERNAME }}/dbj) [![CobaltStrike Docker Build](https://github.com/${{ secrets.DOCKERHUB_USERNAME }}/DBJ/actions/workflows/Dbj_Docker_Build.yml/badge.svg)](https://github.com/${{ secrets.DOCKERHUB_USERNAME }}/DBJ/actions/workflows/Dbj_Docker_Build.yml)' README.md
 #       - 
 #         name: Commit files
 #         run: |
@@ -54,4 +54,4 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: xrsec/dbj
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/dbj
