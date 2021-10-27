@@ -46,8 +46,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/dbj:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/dbj:cache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/dbj:cache,mode=max
       - 
         name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v2
