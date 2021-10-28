@@ -1,6 +1,8 @@
 <h1 align="center"><a href="https://dbj.vercel.app/">DBJ大宝剑 🗡</a></h1>
 
-![](https://img.shields.io/badge/ReaTeam-%E6%AD%A6%E5%99%A8%E5%BA%93-red) ![](https://img.shields.io/badge/license-GPL--3.0-orange) ![](https://img.shields.io/badge/version-1.0.1-brightgreen) ![](https://img.shields.io/badge/author-wintrysec%20%E6%B8%A9%E9%85%92-blueviolet) ![](https://img.shields.io/badge/WgpSec-%E7%8B%BC%E7%BB%84%E5%AE%89%E5%85%A8%E5%9B%A2%E9%98%9F-blue) [![Docker Automated Build](https://img.shields.io/docker/automated/xrsec/dbj?label=Build&logo=docker&style=flat-square)](https://hub.docker.com/r/xrsec/dbj) [![CobaltStrike Docker Build](https://github.com/XRSec/DBJ/actions/workflows/Dbj_Docker_Build.yml/badge.svg)](https://github.com/XRSec/DBJ/actions/workflows/Dbj_Docker_Build.yml)
+![](https://img.shields.io/badge/ReaTeam-%E6%AD%A6%E5%99%A8%E5%BA%93-red) ![](https://img.shields.io/badge/Fork-wintrysec-orange) ![](https://img.shields.io/badge/version-1.0.1-brightgreen) [![Docker Automated Build](https://img.shields.io/docker/automated/xrsec/dbj?label=Build&logo=docker&style=flat-square)](https://hub.docker.com/r/xrsec/dbj) [![CobaltStrike Docker Build](https://github.com/XRSec/DBJ/actions/workflows/Dbj_Docker_Build.yml/badge.svg)](https://github.com/XRSec/DBJ/actions/workflows/Dbj_Docker_Build.yml)
+
+本工具`Fork`自 [wgpsec](https://github.com/wgpsec/DBJ) 由于原仓库不在更新，故进行二次开发，欢迎各位提出改进建议
 
 ### 定位：边界资产梳理工具
 
@@ -114,7 +116,7 @@ docker rm `docker ps -a -q` && docker rmi -f dbj_img && docker network prune -f
 ```
 
 
-##### 二、直接一键启动（⚠源由第三方提供 by xrsec）
+##### 二、直接一键启动
 
 ```bash
 docker run -it -d --name dbj -p 5000:5000 xrsec/dbj:latest
@@ -159,7 +161,7 @@ gpgcheck=0
 enabled=1
 EOF
 
-yum makecache;yum -y install mongodb-org
+yum makecache && yum -y install mongodb-org
 pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 
 mkdir -p /root/.config
@@ -189,6 +191,4 @@ mongo 127.0.0.1:27017/webapp data.js
 sh centos.sh
 ```
 
-然后打开浏览器访问 IP:5000 登录即可（默认账户密码admin/admin，进去自己改）
-
-> XRSec has the right to modify and interpret this article. If you want to reprint or disseminate this article, you must ensure the integrity of this article, including all contents such as copyright notice. Without the permission of the author, the content of this article shall not be modified or increased or decreased arbitrarily, and it shall not be used for commercial purposes in any way
+然后打开浏览器访问 IP:5000 登录即可（默认账户密码admin/admin，WEB页面修改密码）
