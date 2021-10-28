@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+
+                        <form class="layui-form" name="task_Name">
+                        <div class="layui-card-header">
+                            <input type="hidden" name="task_Name" value="{{taskname}}" />
+                            <a class="layui-btn layui-btn-normal" href="{{url_for('admin.export_url',taskName=taskname,web_tag=web_tag,target_type=target_type)}}">导出URL</a>
+                                
+                            <form class="layui-form">
+                                    <div class="layui-input-inline">
+                                        <select name="webtag" lay-verify="" lay-filter="webtag">
+                                            <option value="" disabled selected>指纹索引</option>
+                                            {% for tag in tags %}
+                                            <option value="{{tag}}">{{tag}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                            </form>
+                        </div>
+                        </form>
+                        
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <table class="layui-table layui-form">
+                                <thead>
+                                  <tr>
+                                      <th >序号</th>
+                                      <th style="width: 200px;">主机地址</th>
+                                      <th>网站标题</th>
+                                      <th>Server中间件</th>
+                                      <th >Web指纹</th>
+                                      <th style="width: 110px;">IP</th>
+                                      <th >目录扫描</th>
+                                      <th style="width: 95px;">地理位置</th>
+                                      <th >运营商</th>
+                                  </tr>
+                                </thead>
+                                {% for list in lists %}
+                                <tbody>
+                                  <tr>
+                                      <td style="width: 30px;">{{loop.index}}</td>
+                                      {% if list['host'][0:4]=='http' %}
+                                      <td><a href="{{list['host']}}" target="_blank" style="color: blue;width: 200px;">{{list['host']}}</a></td>
+                                      {% else %}
+                                      <td><a href="http://{{list['host']}}" target="_blank" style="color: blue;width: 200px;">{{list['host']}}</a></td>
+                                      {% endif %}
+                                      <td>{{list['web_title']}}</td>
+                                      <td>{{list['container']}}</td>
+                                      <td >{{list['tag']}}</td>
+                                      <td style="width: 110px;">{{list['ip']}}</td>
+                                      <!-- <td >{{list['dirscan']}}</td> -->
+                                      <td>{% for dir in list['dirscan']%}<a style="color: blue;" href="{{dir}}" target="_blank">{{dir}}</a><br>{% endfor %}</td>
+                                      <td >{{list['geo']}}</td>
+                                      <td >{{list['isp']}}</td>
+                                  </tr>
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            layui.use(['form', 'layer'],
+            function() {
+                $ = layui.jquery;
+                var form = layui.form;
+                var layer = layui.layer;
+
+                //监测下拉菜单
+                
+                form.on('select(webtag)',function (data) {
+                    var web_tag = data.value;
+                    var taskName = '{{taskname}}';
+
+                    $.ajax({
+                        type:"post",
+                        url:"/admin/"+taskName+"/subdomain-list",
+                        data:{"webtag":web_tag},
+                        success:function (webs) {
+                            //对应的值传回
+                            document.body.innerHTML="";
+                            document.write(webs);
+                            },error:function () {layer.alert('请求失败');}
+                        });
+                    });
+                    
+                        
+
+            });
+        </script>
+
+    </body>
+
+{% endblock %}

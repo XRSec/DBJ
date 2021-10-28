@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block title %}大宝剑{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="logo">
+        <a href="#"><img src="{{ url_for('static', filename='images/wgpsec.png') }}" style="height: 25px;width: 25px;margin-right: 4px;">DBJ-大宝剑</a>
+    </div>
+
+    <div class="left_open">
+        <a><i title="展开左侧栏" class="layui-icon">&#xe668;</i></a>
+    </div>
+
+    <ul class="layui-nav right" lay-filter="">
+        <li class="layui-nav-item">
+            
+            {% if g.user %}
+            <a href="javascript:;">{{ g.user['username'] }}<span class="layui-nav-more"></span></a>
+            {% else %}
+            {% endif %}
+            
+            <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                <!-- 二级菜单 -->
+                <dd>
+                    <a onclick="xadmin.open('修改密码',`{{ url_for('admin.pass_edit', uid=g.user['uid']) }}`,450,220)">修改密码</a>
+                <dd>
+                    <a href="{{ url_for('admin.clear_redis') }}">清空缓存</a>
+                </dd>
+                <dd>
+                    <a href="{{ url_for('auth.logout') }}">注销</a></dd>
+            </dl>
+        </li>
+    </ul>
+</div>
+
+
+<body class="index">
+        <!-- 中部开始 -->
+        <!-- 左侧菜单开始 -->
+        <div class="left-nav">
+            <div id="side-nav">
+                <ul id="nav">
+                    <li>
+                        <a onclick="xadmin.add_tab('企业组织架构','/enscan/escan')" style="color: aliceblue;">
+                            <i class="layui-icon">&#xe615;</i>
+                            <cite>企业组织架构</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="xadmin.add_tab('子域名查询','/admin/tasklist?target_type=subdomain')" style="color: aliceblue;">
+                            <i class="layui-icon">&#xe687;</i>
+                            <cite>子域名查询</cite>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a onclick="xadmin.add_tab('IP资产梳理','/admin/tasklist?target_type=web')" style="color: aliceblue;">
+                            <i class="layui-icon">&#xe7e0;</i>
+                            <cite>IP资产梳理</cite>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a onclick="xadmin.add_tab('ICON_HASH','/admin/icohash')" style="color: aliceblue;">
+                            <i class="layui-icon">&#xe60d;</i>
+                            <cite>ICON_HASH</cite>
+                        </a>
+                    </li>
+
+                    <!-- <li>
+                        <a onclick="xadmin.add_tab('资产关键字索引','/admin/title_k')" style="color: aliceblue;">
+                            <i class="layui-icon">&#xe609;</i>
+                            <cite>资产关键字索引</cite>
+                        </a>
+                    </li> -->
+
+                    <li>
+                        <a onclick="xadmin.add_tab('POC插件漏扫','/admin/poc-scan')" style="color: aliceblue;">
+                            <i class="layui-icon">&#xe679;</i>
+                            <cite>POC插件漏扫</cite>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a onclick="xadmin.add_tab('系统设置','/admin/sysconf')" style="color: aliceblue;">
+                            <i class="layui-icon">&#xe609;</i>
+                            <cite>系统设置</cite>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 左侧菜单结束 -->
+
+        <!-- 右侧主体开始 -->
+         
+
+        <div class="page-content" >
+            <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+                <ul class="layui-tab-title">
+                    <li class="home">
+                        <i class="layui-icon">&#xe68e;</i>welcome</li></ul>
+                <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
+                    <dl>
+                        <dd data-type="this">关闭当前</dd>
+                        <dd data-type="other">关闭其它</dd>
+                        <dd data-type="all">关闭全部</dd></dl>
+                </div>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <iframe src="{{ url_for('admin.show_index') }}" frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}

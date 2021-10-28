@@ -10,8 +10,6 @@
 
 ## 功能简介
 
-bilibili视频地址（不方便拿实际目标演示，取消视频演示）
-
 ![](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210917223127965121.png)
 
 
