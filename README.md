@@ -142,6 +142,7 @@ docker logs dbj
 将`DBJ`放置在系统根目录`\`
 
 ```bash
+# 看起来很乱，实际上非常nice
 mv /etc/yum.repos.d/CentOS-Linux-BaseOS.repo /etc/yum.repos.d/CentOS-Linux-BaseOS.repo.backup
 curl -o /etc/yum.repos.d/CentOS-Linux-BaseOS.repo https://mirrors.aliyun.com/repo/Centos-8.repo
 yum makecache
@@ -164,14 +165,13 @@ gpgcheck=0
 enabled=1
 EOF
 
-yum makecache && yum -y install mongodb-org
+yum makecache;yum -y install mongodb-org
 pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 
 mkdir -p /root/.config
 cp -r /DBJ/data/.config/nuclei /root/.config/nuclei
 chmod +x /DBJ/data/nuclei
 ln -s /DBJ/data/nuclei /usr/bin/nuclei
-
 ```
 
 若mongoDB需要认证
