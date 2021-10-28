@@ -120,6 +120,9 @@ docker rm `docker ps -a -q` && docker rmi -f dbj_img && docker network prune -f
 
 ```bash
 docker run -it -d --name dbj -p 5000:5000 xrsec/dbj:latest
+
+# 国内阿里云
+docker run -it -d --name dbj -p 5000:5000 registry.cn-hangzhou.aliyuncs.com/xrsec/dbj
 ```
 
 访问 http://ip:5000 
