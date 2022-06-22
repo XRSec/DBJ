@@ -8,13 +8,11 @@
 
 > 大宝剑的寓意：攻防利刃，简化繁琐操作解放双手，一键大保健~
 
-![](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210917223134778402.png)
+![](https://dogefs.s3.ladydaily.com/ZYGG/storage/20210917223134778402.png?fmt=webp&q=48)
 
 ## 功能简介
 
-![](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210917223127965121.png)
-
-
+![](https://dogefs.s3.ladydaily.com/ZYGG/storage/20210917223127965121.png?fmt=webp&q=48)
 
 #### 企业组织架构查询
 
@@ -26,9 +24,7 @@
 
 4、查询结果缓存在Redis，可导出为CSV表格
 
-![](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210917223141017111.png)
-
-
+![](https://dogefs.s3.ladydaily.com/ZYGG/storage/20210917223141017111.png?fmt=webp&q=48)
 
 #### 子域名资产梳理
 
@@ -55,15 +51,11 @@ FOFA-API、https证书、DNS爆破等方式获取子域名资产，自动判断C
 
 ![image-20210311161144314](https://gitee.com/wintrysec/images/raw/master//image-20210311161144314.png)
 
-
-
 **导出URL**
 
 导出全部URL，或根据指纹索引匹配资产导出URL，然后扔到别的工具或漏扫里边跑
 
 ![image-20210311161942904](https://gitee.com/wintrysec/images/raw/master//image-20210311161942904.png)
-
-
 
 #### Web指纹识别
 
@@ -81,15 +73,11 @@ FOFA-API、https证书、DNS爆破等方式获取子域名资产，自动判断C
 
 Web指纹识别时并未发送恶意请求所以无需代理。
 
-
-
 #### ICON_HASH计算
 
 计算图标的哈希值，并自动匹配相关资产
 
 ![image-20210311164827806](https://gitee.com/wintrysec/images/raw/master//image-20210311164827806.png)
-
-
 
 #### POC插件漏扫
 
@@ -97,24 +85,24 @@ Web指纹识别时并未发送恶意请求所以无需代理。
 
 **注意！！！**：**漏扫功能需要在系统设置中填写正确的机器人WebHook地址才能使用，支持钉钉和飞书**
 
-![](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210917223225635363.png)
+![](https://dogefs.s3.ladydaily.com/ZYGG/storage/20210917223225635363.png?fmt=webp&q=48)
 
 ## 安装教程
 
 ### Docker 安装模式
 
 ##### 一、自己构建镜像
+
 ```bash
 git clone https://github.com/wgpsec/DBJ.git
 cd DBJ
-docker build -t dbj_img .							#构建镜像
-docker run -it -d --name dbj -p 5000:5000 dbj_img	#启动容器
+docker build -t dbj_img .       #构建镜像
+docker run -it -d --name dbj -p 5000:5000 dbj_img #启动容器
 
 #如需重新安装，用以下命令删除容器
 docker stop dbj
 docker rm `docker ps -a -q` && docker rmi -f dbj_img && docker network prune -f
 ```
-
 
 ##### 二、直接一键启动
 
@@ -125,7 +113,7 @@ docker run -it -d --name dbj -p 5000:5000 xrsec/dbj:latest
 docker run -it -d --name dbj -p 5000:5000 registry.cn-hangzhou.aliyuncs.com/xrsec/dbj
 ```
 
-访问 http://ip:5000 
+访问 <http://ip:5000>
 
 ##### 三、查看输出信息
 
@@ -177,8 +165,8 @@ ln -s /DBJ/data/nuclei /usr/bin/nuclei
 若mongoDB需要认证
 
 ```bash
-pkill mongod	#关闭mongodb
-mongod -f /etc/mongod.conf	#重新启动mongo
+pkill mongod #关闭mongodb
+mongod -f /etc/mongod.conf #重新启动mongo
 ```
 
 ##### 二、创建数据库初始数据
