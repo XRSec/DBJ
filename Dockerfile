@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 LABEL Auther="xrsec"
-LABEL Mail="troy@zygd.site"
+LABEL Mail="Jalapeno1868@outlook.com"
 LABEL Github="https://github.com/XRSec/DBJ"
 
 COPY . /DBJ
